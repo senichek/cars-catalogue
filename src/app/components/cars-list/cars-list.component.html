@@ -1,0 +1,24 @@
+<h2>List of cars</h2>
+
+<div class="gallery" *ngFor="let car of cars">
+
+
+    <a target="_blank" href={{car.image}}>
+      <img src={{car.image}} alt="Cinque Terre" width="600" height="400">
+    </a>
+    <div class="desc">
+
+      <p>Model: {{car.model}} <br>
+        Color: {{car.color}} <br>
+        Production date: {{car.productionDate}} <br>
+        Description: {{car.description}} <br>
+      </p>
+
+    </div>
+
+
+</div>
+
+
+
+
