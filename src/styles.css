@@ -1,6 +1,29 @@
+.main-screen-container {
+  display: flex;
+  background-color: rgb(214, 214, 214);
+}
+
+.car-gallery-container {
+  display: block;
+  overflow: auto;
+  border: 3px solid rgb(90, 156, 63);
+  
+}
+
+.filter-container {
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 20em;
+  margin-top: 150px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
 div.gallery {
   margin: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(155, 154, 154);
   float: left;
   width: 280px;
 }
@@ -17,4 +40,41 @@ div.gallery img {
 div.desc {
   padding: 15px;
   text-align: center;
+}
+
+
+
+
+/* Navigation bar */
+
+.navigation-bar {
+  background-color: rgb(70, 69, 69);
+}
+
+.navigation-bar .ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background-color: #333; */
+}
+
+.navigation-bar .li {
+  float: left;
+}
+
+.navigation-bar .li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navigation-bar .li a:hover:not(.active) {
+  background-color: #da8e01;;
+}
+
+.active {
+  background-color: #da8e01;
 }

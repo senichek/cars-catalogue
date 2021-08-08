@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders} from "@angular/common/http"
-import {Car} from '../car';
+import { HttpClient, HttpHeaders } from "@angular/common/http"
+import { Subject } from 'rxjs';
+import { Car } from '../car';
+import { FilterParams } from '../FilterParams';
 import { GlobalVariable } from 'globals';
 
 const httpOptions = {
@@ -17,11 +19,16 @@ export class CarsService {
 
   private apiURL = GlobalVariable.BASE_API_URL;
 
-  cars: Car[] = [];
+  filterParamsSubject = new Subject<FilterParams>();
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(this.apiURL);
+  }
+
+  // Sending the filter values between the filter and car-list components;
+  sendFilterParams(params: FilterParams) {
+    this.filterParamsSubject.next(params);
   }
 }

@@ -3,6 +3,7 @@ export interface Car {
   model: string;
   description: string;
   color: string;
+  transmission: string;
   productionDate: string;
   image: string;
 }
