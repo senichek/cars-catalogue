@@ -20,21 +20,13 @@ export class FilterComponent implements OnInit {
     transmission: ''
   });
 
-  // The object to store the filtering params that "filter" component will receive;
+  // The object to store the filtering params that "CarsListComponent" component will receive;
   filterObj = {
-    "model": "",
+    "mdl": "",
     "color": "",
     "transmission": "",
     "productionDate": ""
   }
-
-  // The filter object is pushed into an array so that *ngFor can iterate over it;
-  /* filterParams: FilterParams = {
-    "model": "",
-    "color": "",
-    "transmission": "",
-    "productionDate": ""
-  } */
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,11 +37,9 @@ export class FilterComponent implements OnInit {
   }
 
   submitFilter(): void {
-    // Process the filtering;
-    //alert("Filter request is: " + this.filterForm.value.model);  
-
+    console.log("submitFilter() was called;")
     if (this.filterForm.value.model != "") {
-      this.filterObj.model = this.filterForm.value.model;
+      this.filterObj.mdl = this.filterForm.value.model;
     }
 
     if (this.filterForm.value.color != "") {
@@ -65,6 +55,13 @@ export class FilterComponent implements OnInit {
     }
 
     this.carService.sendFilterParams(this.filterObj);
+
+    // Clearing the filter;
+    this.filterObj = {
+      "mdl": "",
+      "color": "",
+      "transmission": "",
+      "productionDate": ""
+    }
   }
-   
 }

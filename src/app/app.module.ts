@@ -8,13 +8,15 @@ import { CarsListComponent } from './components/cars-list/cars-list.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilteringPipe } from './pipes/filtering.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarsListComponent,
     TopBarComponent,
-    FilterComponent
+    FilterComponent,
+    FilteringPipe
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [FilteringPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

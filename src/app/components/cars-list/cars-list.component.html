@@ -1,5 +1,5 @@
 <div class="car-gallery-container">
-  <div class="gallery" *ngFor="let car of cars">
+  <div class="gallery" *ngFor="let car of cars | filtering:filterParams">
     <a target="_blank" href={{car.image}}>
       <img src={{car.image}} alt="Cinque Terre" width="600" height="400">
     </a>

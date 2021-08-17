@@ -1,5 +1,5 @@
 export interface FilterParams {
-    model: string;
+    mdl: string;
     color: string;
     transmission: string;
     productionDate: string;
