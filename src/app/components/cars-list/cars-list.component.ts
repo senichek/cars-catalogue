@@ -17,6 +17,8 @@ export class CarsListComponent implements OnInit {
 
   filteredCars: Car[] = [];
 
+  favouriteCars: Car[] = [];
+
   filterParams: FilterParams = {
     "mdl": "",
     "color": "",
@@ -44,4 +46,24 @@ export class CarsListComponent implements OnInit {
       console.log("CarListComponent's Transform was called;")
     })
   };
+
+  /* addToFavorite(id: number) {
+    this.cars.forEach(car => {
+      if (car._id === id && !this.favouriteCars.includes(car)) {
+        this.favouriteCars.push(car);
+        car.liked = true;
+      }
+    })
+    this.carsService.setFavoriteCars(this.favouriteCars);
+    console.log(this.favouriteCars)
+  } */
+
+  addToFavorite(car: Car) {
+      if (!this.favouriteCars.includes(car)) {
+        this.favouriteCars.push(car);
+        car.liked = true;
+      }
+    this.carsService.setFavoriteCars(this.favouriteCars);
+    console.log(this.favouriteCars)
+  }
 }

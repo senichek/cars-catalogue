@@ -7,7 +7,7 @@
   display: block;
   overflow: auto;
   border: 3px solid rgb(90, 156, 63);
-  
+
 }
 
 .filter-container {
@@ -42,6 +42,10 @@ div.desc {
   text-align: center;
 }
 
+.addFav:hover {
+  background-color: #da8e01;
+}
+
 
 
 
@@ -72,7 +76,7 @@ div.desc {
 }
 
 .navigation-bar .li a:hover:not(.active) {
-  background-color: #da8e01;;
+  background-color: #da8e01;
 }
 
 .active {

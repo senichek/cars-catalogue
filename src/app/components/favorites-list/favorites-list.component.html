@@ -1,5 +1,5 @@
 <div class="car-gallery-container">
-  <div class="gallery" *ngFor="let car of cars | filtering:filterParams">
+  <div class="gallery" *ngFor="let car of favCars">
     <a target="_blank" href={{car.image}}>
       <img src={{car.image}} alt="Cinque Terre" width="600" height="400">
     </a>
@@ -10,10 +10,11 @@
         Production date: {{car.productionDate.substr(0, 10)}} <br>
         Description: {{car.description}} <br>
         <br>
-      <app-add-favorite
-      [car]="car"
-      (addToFavorite)="addToFavorite(car)">
-      </app-add-favorite>
+        <fa-icon class="addFav"
+        (click)="deleteCarFromFavorites(car)"
+        [ngStyle]="{color: 'red'}"
+        [icon]="faTimes"
+        ></fa-icon>
       </p>
     </div>
   </div>

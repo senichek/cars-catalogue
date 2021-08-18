@@ -1,0 +1,6 @@
+<button (click)="addToFavorite.emit()" class="addFav" title="Add to favorites">
+  <fa-icon [icon]="faHeart" *ngIf="car.liked" [ngStyle]="{ color: 'red' }">
+  </fa-icon>
+  <fa-icon [icon]="faHeart" *ngIf="!car.liked" [ngStyle]="{ color: 'black' }">
+  </fa-icon>
+</button>
