@@ -1,2 +1,1 @@
-Re-write filter to make it re-usable without duping the code;
-The second click on the Liked car should remove it from the Liked list
+Add new cars option

@@ -1,69 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { CarsService } from 'src/app/services/cars.service';
 import { Car } from 'src/app/Car';
-import { FilterParams } from 'src/app/FilterParams';
+import { Filter } from 'src/app/Filter';
 import { FilteringPipe } from 'src/app/pipes/filtering.pipe';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-cars-list',
   templateUrl: './cars-list.component.html',
-  styleUrls: ['./cars-list.component.css']
+  styleUrls: ['./cars-list.component.css'],
 })
-
 export class CarsListComponent implements OnInit {
-
   cars: Car[] = []; // keep this collection unchanged so
-                    //that there is no need to get it from DB every time after filtering;
+  //that there is no need to get it from DB every time after filtering;
 
   filteredCars: Car[] = [];
 
   favouriteCars: Car[] = [];
 
-  filterParams: FilterParams = {
-    "mdl": "",
-    "color": "",
-    "transmission": "",
-    "productionDate": ""
-  }
-
-  constructor(private carsService: CarsService, private filteringPipe: FilteringPipe) { }
-
-  ngOnInit(): void {
-    this.carsService.getCars().subscribe((carz) =>
-      (this.cars = carz)
-    )
-
-
-    // Receiving filter params from "filter-component";
-    this.carsService.filterParamsSubject.subscribe((data) => {
-
-      this.filteredCars = this.cars;
-
-      console.log("carsService.filterParamsSubject.subscribe was called;");
-      this.filterParams = data;
-      console.log(this.filterParams); // Удалить
-      this.filteringPipe.transform(this.filteredCars, this.filterParams);
-      console.log("CarListComponent's Transform was called;")
-    })
+  filterValues: Filter = {
+    mdl: '',
+    color: '',
+    transmission: '',
+    productionDate: '',
   };
 
-  /* addToFavorite(id: number) {
-    this.cars.forEach(car => {
-      if (car._id === id && !this.favouriteCars.includes(car)) {
-        this.favouriteCars.push(car);
-        car.liked = true;
-      }
-    })
-    this.carsService.setFavoriteCars(this.favouriteCars);
-    console.log(this.favouriteCars)
-  } */
+  constructor(
+    private carsService: CarsService,
+    private filteringPipe: FilteringPipe,
+    private filterService: FilterService
+  ) {}
+
+  ngOnInit(): void {
+    this.carsService.getCars().subscribe((carz) => (this.cars = carz));
+
+    // As soon as something gets submitted to the filtering form the "subscribe" will react
+    // and the filtering will be triggered;
+    this.filterService.filterValuesSubject.subscribe((data) => {
+      this.filterValues = data;
+      this.filterService.filter(this.cars, this.filterValues);
+    });
+  }
 
   addToFavorite(car: Car) {
-      if (!this.favouriteCars.includes(car)) {
-        this.favouriteCars.push(car);
-        car.liked = true;
-      }
+    if (!this.favouriteCars.includes(car)) {
+      this.favouriteCars.push(car);
+      car.liked = true;
+    } else {
+      this.carsService.deleteCarFromFavorites(car, this.favouriteCars);
+      car.liked = false;
+    }
     this.carsService.setFavoriteCars(this.favouriteCars);
-    console.log(this.favouriteCars)
+    console.log(this.favouriteCars);
   }
 }

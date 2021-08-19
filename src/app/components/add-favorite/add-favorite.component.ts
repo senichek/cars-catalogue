@@ -14,7 +14,7 @@ export class AddFavoriteComponent implements OnInit {
 
   faHeart = faHeart;
 
-  @Output() addToFavorite = new EventEmitter();
+  @Output() addOrRemoveFromFavorite = new EventEmitter();
 
   constructor() { }
 

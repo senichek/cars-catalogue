@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Car } from '../Car';
-import { FilterParams } from '../FilterParams';
+import { Filter } from '../Filter';
 
 // https://stackoverflow.com/questions/34164413/how-to-apply-filters-to-ngfor
 
@@ -9,7 +9,7 @@ import { FilterParams } from '../FilterParams';
 })
 export class FilteringPipe implements PipeTransform {
 
-  transform(value: Car[], filter: FilterParams): Car[] {
+  transform(value: Car[], filter: Filter): Car[] {
     console.log("FilteringPipe transform was called;")
 
     if (filter.mdl == "" && filter.color == ""

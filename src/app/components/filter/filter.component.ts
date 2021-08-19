@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Output, EventEmitter } from '@angular/core';
 import { CarsService } from 'src/app/services/cars.service';
-import { FilterParams } from 'src/app/FilterParams';
+import { Filter } from 'src/app/Filter';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-filter',
@@ -11,8 +11,6 @@ import { FilterParams } from 'src/app/FilterParams';
 })
 export class FilterComponent implements OnInit {
 
-  @Output() runCarFilter = new EventEmitter();
-
   filterForm = this.formBuilder.group({
     model: '',
     productionDate: '',
@@ -20,8 +18,7 @@ export class FilterComponent implements OnInit {
     transmission: ''
   });
 
-  // The object to store the filtering params that "CarsListComponent" component will receive;
-  filterObj = {
+  filter: Filter = {
     "mdl": "",
     "color": "",
     "transmission": "",
@@ -30,7 +27,8 @@ export class FilterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private carService: CarsService
+    private carService: CarsService,
+    private filterService: FilterService
   ) { }
 
   ngOnInit(): void {
@@ -39,25 +37,25 @@ export class FilterComponent implements OnInit {
   submitFilter(): void {
     console.log("submitFilter() was called;")
     if (this.filterForm.value.model != "") {
-      this.filterObj.mdl = this.filterForm.value.model;
+      this.filter.mdl = this.filterForm.value.model;
     }
 
     if (this.filterForm.value.color != "") {
-      this.filterObj.color = this.filterForm.value.color;
+      this.filter.color = this.filterForm.value.color;
     }
 
     if (this.filterForm.value.transmission != "") {
-      this.filterObj.transmission = this.filterForm.value.transmission;
+      this.filter.transmission = this.filterForm.value.transmission;
     }
 
     if (this.filterForm.value.productionDate != "") {
-      this.filterObj.productionDate = this.filterForm.value.productionDate;
+      this.filter.productionDate = this.filterForm.value.productionDate;
     }
 
-    this.carService.sendFilterParams(this.filterObj);
+    this.filterService.sendFilterValues(this.filter);
 
     // Clearing the filter;
-    this.filterObj = {
+    this.filter = {
       "mdl": "",
       "color": "",
       "transmission": "",

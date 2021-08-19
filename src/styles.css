@@ -1,12 +1,13 @@
 .main-screen-container {
   display: flex;
   background-color: rgb(214, 214, 214);
+  min-height: 500px;
 }
 
 .car-gallery-container {
   display: block;
   overflow: auto;
-  border: 3px solid rgb(90, 156, 63);
+  /* border: 3px solid rgb(90, 156, 63); */
 
 }
 
@@ -43,7 +44,7 @@ div.desc {
 }
 
 .addFav:hover {
-  background-color: #da8e01;
+  background-color: #0574b4;
 }
 
 
@@ -76,7 +77,7 @@ div.desc {
 }
 
 .navigation-bar .li a:hover:not(.active) {
-  background-color: #da8e01;
+  background-color: #0574b4;
 }
 
 .active {

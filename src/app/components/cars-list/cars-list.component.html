@@ -1,5 +1,5 @@
 <div class="car-gallery-container">
-  <div class="gallery" *ngFor="let car of cars | filtering:filterParams">
+  <div class="gallery" *ngFor="let car of cars | filtering:filterValues">
     <a target="_blank" href={{car.image}}>
       <img src={{car.image}} alt="Cinque Terre" width="600" height="400">
     </a>
@@ -12,7 +12,7 @@
         <br>
       <app-add-favorite
       [car]="car"
-      (addToFavorite)="addToFavorite(car)">
+      (addOrRemoveFromFavorite)="addToFavorite(car)">
       </app-add-favorite>
       </p>
     </div>
