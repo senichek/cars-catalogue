@@ -39,7 +39,9 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+TODO.txt
 
 # System Files
 .DS_Store
 Thumbs.db
+TODO.txt

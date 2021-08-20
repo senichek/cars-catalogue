@@ -5,28 +5,16 @@
 }
 
 .car-gallery-container {
-  display: block;
-  overflow: auto;
-  /* border: 3px solid rgb(90, 156, 63); */
-
+  column-count: 4;
+  column-gap: 1px;
+  border: 3px solid rgb(90, 156, 63);
 }
-
-.filter-container {
-  border: 3px solid rgb(255, 255, 255);
-  border-radius: 10px;
-  padding: 10px;
-  min-width: 20em;
-  margin-top: 150px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
 
 div.gallery {
+  display: inline-block;
   margin: 5px;
   border: 1px solid rgb(155, 154, 154);
-  float: left;
-  width: 280px;
+  width: 95%;
 }
 
 div.gallery:hover {
@@ -41,6 +29,16 @@ div.gallery img {
 div.desc {
   padding: 15px;
   text-align: center;
+}
+
+.filter-container {
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 20em;
+  margin-top: 150px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .addFav:hover {
