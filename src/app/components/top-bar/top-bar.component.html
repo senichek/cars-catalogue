@@ -1,32 +1,42 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">News</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-          </li>
-          <li class="nav-item">
-            <button style="margin-right: 20px; margin-left: 15px;" (click)="toggleFilterForm()" class="btn btn-primary btn-md">Search</button>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">News</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <div *ngIf="router.url != '/favorites'" style="display: flex">
+        <li class="nav-item">
+          <button
+            style="margin-right: 20px; margin-left: 15px"
+            (click)="toggleFilterForm()"
+            class="btn btn-primary btn-md"
+          >
+            Search
+          </button>
         </li>
         <li class="nav-item">
-          <app-add-new-car></app-add-new-car> <!-- This is button -->
-      </li>
-      </ul>
+          <app-add-new-car></app-add-new-car>
+          <!-- This is button -->
+        </li>
+      </div>
+    </ul>
   </div>
-
   <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-      <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-              <a class="nav-link" routerLink="/favorites">Favorites</a>
-          </li>
-          <li class="nav-item active">
-              <a class="nav-link" style="background-color: rgb(255, 147, 7);" href="#">About</a>
-          </li>
-      </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/favorites">Favorites</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" style="background-color: rgb(255, 147, 7)" href="#"
+          >About</a
+        >
+      </li>
+    </ul>
   </div>
 </nav>
