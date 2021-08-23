@@ -1,5 +1,4 @@
 .main-screen-container {
-  display: flex;
   background-color: rgb(214, 214, 214);
   min-height: 500px;
 }
@@ -7,7 +6,7 @@
 .car-gallery-container {
   column-count: 4;
   column-gap: 1px;
-  border: 3px solid rgb(90, 156, 63);
+  /* border: 3px solid rgb(90, 156, 63); */
 }
 
 div.gallery {
@@ -29,55 +28,38 @@ div.gallery img {
 div.desc {
   padding: 15px;
   text-align: center;
-}
-
-.filter-container {
-  border: 3px solid rgb(255, 255, 255);
-  border-radius: 10px;
-  padding: 10px;
-  min-width: 20em;
-  margin-top: 150px;
-  margin-left: 5px;
-  margin-right: 5px;
+  content: "\a";
 }
 
 .addFav:hover {
-  background-color: #0574b4;
+  background-color: dodgerblue;
 }
 
+.add-new-car {
+  color: #da8e01;
+  margin: 7px;
+}
+
+.add-new-car:hover {
+  background-color: dodgerblue;
+}
+
+.filter-container {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+}
+
+label, input {
+  display: block;
+}
+
+label {
+  margin-bottom: 10px;
+}
 
 
 
 /* Navigation bar */
 
-.navigation-bar {
-  background-color: rgb(70, 69, 69);
-}
 
-.navigation-bar .ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  /* background-color: #333; */
-}
-
-.navigation-bar .li {
-  float: left;
-}
-
-.navigation-bar .li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.navigation-bar .li a:hover:not(.active) {
-  background-color: #0574b4;
-}
-
-.active {
-  background-color: #da8e01;
-}

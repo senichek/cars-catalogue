@@ -9,7 +9,11 @@ import { FilteringPipe } from 'src/app/pipes/filtering.pipe';
 })
 export class FilterService {
 
+  filterFormToggle: boolean = false;
+
   filterValuesSubject = new Subject<Filter>();
+
+  filterToggleSubject = new Subject<any>();
 
   copyOfCars: Car[] = []
 
@@ -26,5 +30,10 @@ export class FilterService {
     // the database each time we do the filtering.
     this.copyOfCars = cars;
     this.filteringPipe.transform(this.copyOfCars, filter);
+  }
+
+  toggleFilterForm() {
+    this.filterFormToggle = !this.filterFormToggle;
+    this.filterToggleSubject.next(this.filterFormToggle);
   }
 }

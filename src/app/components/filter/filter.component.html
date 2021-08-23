@@ -1,29 +1,79 @@
-<div class="filter-container">
-    <form [formGroup]="filterForm" (ngSubmit)="submitFilter()">
-        <div>
-            <label for="model">
-            </label>
-            <input id="model" type="text" placeholder="Car Model" formControlName="model">
+<div *ngIf="filterFormToggle">
+  <form
+    class="filter-container"
+    [formGroup]="filterForm"
+    (ngSubmit)="submitFilter()"
+  >
+    <div class="form-group row">
+      <label for="model" class="col-sm-2 col-form-label">Car Model</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="model"
+          placeholder="Model"
+          formControlName="model"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="color" class="col-sm-2 col-form-label">Color</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="color"
+          placeholder="Color"
+          formControlName="color"
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="productionDate" class="col-sm-2 col-form-label">Year</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="productionDate"
+          placeholder="Year"
+          formControlName="productionDate"
+        />
+      </div>
+    </div>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Transmission</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transmission"
+              id="gridRadios1"
+              formControlName="transmission"
+              value="Manual"
+              checked
+            />
+            <label class="form-check-label" for="gridRadios1"> Manual </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transmission"
+              id="gridRadios2"
+              formControlName="transmission"
+              value="Auto"
+            />
+            <label class="form-check-label" for="gridRadios2"> Auto </label>
+          </div>
         </div>
-        <div>
-            <label for="color">
-            </label>
-            <input id="color" type="text" placeholder="Color" formControlName="color">
-        </div>
-        <div>
-            <label for="transmission">
-            </label>
-            <select id="transmission" formControlName="transmission">
-                <option value="" disabled selected>Select transmission</option>
-                <option value="Manual">Manual</option>
-                <option value="Auto">Automatic</option>
-            </select>
-        </div>
-        <div>
-            <label for="productionDate">
-            </label>
-            <input id="productionDate" type="text" placeholder="Year" formControlName="productionDate">
-        </div>
-        <button class="button" type="submit">Filter</button>
-    </form>
+      </div>
+    </fieldset>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
 </div>

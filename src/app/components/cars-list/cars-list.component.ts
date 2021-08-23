@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarsService } from 'src/app/services/cars.service';
 import { Car } from 'src/app/Car';
 import { Filter } from 'src/app/Filter';
-import { FilteringPipe } from 'src/app/pipes/filtering.pipe';
 import { FilterService } from 'src/app/services/filter/filter.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-cars-list',
@@ -11,6 +11,7 @@ import { FilterService } from 'src/app/services/filter/filter.service';
   styleUrls: ['./cars-list.component.css'],
 })
 export class CarsListComponent implements OnInit {
+
   cars: Car[] = []; // keep this collection unchanged so
   //that there is no need to get it from DB every time after filtering;
 
@@ -27,8 +28,8 @@ export class CarsListComponent implements OnInit {
 
   constructor(
     private carsService: CarsService,
-    private filteringPipe: FilteringPipe,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +40,7 @@ export class CarsListComponent implements OnInit {
     this.filterService.filterValuesSubject.subscribe((data) => {
       this.filterValues = data;
       this.filterService.filter(this.cars, this.filterValues);
+      console.log("ngOnInit() in CarList was called;")
     });
   }
 
@@ -53,4 +55,11 @@ export class CarsListComponent implements OnInit {
     this.carsService.setFavoriteCars(this.favouriteCars);
     console.log(this.favouriteCars);
   }
+
+  saveNewCarToDB(car: Car) {
+    console.log("saveNewCarToDB in CarListComp was called;")
+    this.carsService.saveNewCarToDB(car).subscribe((car) =>
+    (this.cars.push(car)))
+    this.cdr.detectChanges();
+    }
 }

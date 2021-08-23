@@ -1,0 +1,90 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Car Details</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addNewCarForm">
+      <div>
+        <label for="model"> </label>
+        <input
+          id="model"
+          type="text"
+          size="50"
+          placeholder="Car Model"
+          formControlName="model"
+        />
+      </div>
+      <div>
+        <label for="color"> </label>
+        <input
+          id="color"
+          type="text"
+          size="50"
+          placeholder="Color"
+          formControlName="color"
+        />
+      </div>
+      <div>
+        <label for="description"> </label>
+        <textarea id="description" placeholder="Description" formControlName="description"rows="4" cols="53">
+          </textarea>
+      </div>
+      <div>
+        <label for="transmission"> </label>
+        <select id="transmission" formControlName="transmission">
+          <option value="" disabled selected>Select transmission</option>
+          <option value="Manual">Manual</option>
+          <option value="Auto">Automatic</option>
+        </select>
+      </div>
+      <label for="productionDate"></label>
+      <div class="input-group">
+        <input
+          id="productionDate"
+          formControlName="productionDate"
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          ngbDatepicker
+          #dp="ngbDatepicker"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="dp.toggle()"
+            type="button"
+          ></button>
+        </div>
+      </div>
+      <div>
+        <label for="image"> </label>
+        <input
+          id="image"
+          type="text"
+          size="50"
+          placeholder="Paste Image link here https://"
+          formControlName="image"
+        />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click'); saveNewCarToDB()"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+
+<button (click)="open(content)" class="btn btn-primary btn-md">Add New Car</button>

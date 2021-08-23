@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Car } from '../Car';
 import { GlobalVariable } from 'globals';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +25,7 @@ export class CarsService {
   }
 
   setFavoriteCars(carz: Car[]) {
-     this.cars = carz;
+    this.cars = carz;
   }
 
   getFavoriteCars(): Car[] {
@@ -33,5 +37,10 @@ export class CarsService {
     if (index > -1) {
       listOfCars.splice(index, 1);
     }
+  }
+
+  saveNewCarToDB(car: Car) {
+    let jsonCar = JSON.stringify(car);
+    return this.http.post<Car>(this.apiURL, jsonCar, httpOptions);
   }
 }

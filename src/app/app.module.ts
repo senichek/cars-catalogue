@@ -13,6 +13,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddFavoriteComponent } from './components/add-favorite/add-favorite.component';
 import { RouterModule } from '@angular/router';
 import { FavoritesListComponent } from './components/favorites-list/favorites-list.component';
+import { AddNewCarComponent } from './components/add-new-car/add-new-car.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { FavoritesListComponent } from './components/favorites-list/favorites-li
     FilterComponent,
     FilteringPipe,
     AddFavoriteComponent,
-    FavoritesListComponent
+    FavoritesListComponent,
+    AddNewCarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +39,10 @@ import { FavoritesListComponent } from './components/favorites-list/favorites-li
     RouterModule.forRoot([
       { path: '', component: CarsListComponent },
       { path: 'favorites', component: FavoritesListComponent }
-    ])
+    ]),
+    NgbModule
   ],
-  providers: [FilteringPipe],
+  providers: [FilteringPipe, {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}, CarsListComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

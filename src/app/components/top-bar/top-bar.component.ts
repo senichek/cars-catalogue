@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
   }
 
+  toggleFilterForm() {
+    this.filterService.toggleFilterForm();
+  }
 }
