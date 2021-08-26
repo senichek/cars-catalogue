@@ -11,7 +11,6 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./cars-list.component.css'],
 })
 export class CarsListComponent implements OnInit {
-
   cars: Car[] = []; // keep this collection unchanged so
   //that there is no need to get it from DB every time after filtering;
 
@@ -33,6 +32,7 @@ export class CarsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.carsService.getCars().subscribe((carz) => (this.cars = carz));
 
     // As soon as something gets submitted to the filtering form the "subscribe" will react
@@ -40,7 +40,7 @@ export class CarsListComponent implements OnInit {
     this.filterService.filterValuesSubject.subscribe((data) => {
       this.filterValues = data;
       this.filterService.filter(this.cars, this.filterValues);
-      console.log("ngOnInit() in CarList was called;")
+      console.log('ngOnInit() in CarList was called;');
     });
   }
 
@@ -57,9 +57,10 @@ export class CarsListComponent implements OnInit {
   }
 
   saveNewCarToDB(car: Car) {
-    console.log("saveNewCarToDB in CarListComp was called;")
-    this.carsService.saveNewCarToDB(car).subscribe((car) =>
-    (this.cars.push(car)))
+    console.log('saveNewCarToDB in CarListComp was called;');
+    this.carsService
+      .saveNewCarToDB(car)
+      .subscribe((car) => this.cars.push(car));
     this.cdr.detectChanges();
-    }
+  }
 }

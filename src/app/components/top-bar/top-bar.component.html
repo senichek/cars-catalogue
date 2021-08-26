@@ -21,8 +21,12 @@
           </button>
         </li>
         <li class="nav-item">
-          <app-add-new-car></app-add-new-car>
-          <!-- This is button -->
+          <button
+            (click)="toggleAddCarForm()"
+            class="btn btn-primary btn-md"
+          >
+            Add New Car
+          </button>
         </li>
       </div>
     </ul>

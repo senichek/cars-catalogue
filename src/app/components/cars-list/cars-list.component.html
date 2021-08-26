@@ -1,5 +1,6 @@
 <app-top-bar></app-top-bar>
 <app-filter></app-filter>
+<app-add-new-car></app-add-new-car>
 <div class="car-gallery-container">
   <div class="gallery" *ngFor="let car of cars | filtering:filterValues">
     <a target="_blank" href={{car.image}}>

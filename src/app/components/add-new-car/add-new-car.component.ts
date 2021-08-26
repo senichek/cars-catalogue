@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Car } from 'src/app/Car';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { CarsService } from 'src/app/services/cars.service';
 import { CarsListComponent } from '../cars-list/cars-list.component';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-new-car',
@@ -11,12 +12,14 @@ import { CarsListComponent } from '../cars-list/cars-list.component';
 })
 export class AddNewCarComponent implements OnInit {
 
-  closeResult = '';
+  model!: NgbDateStruct;
+
+  addCarFormToggle!: boolean;
 
   constructor(
-    private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private carListComp: CarsListComponent
+    private carListComp: CarsListComponent,
+    private carService: CarsService
   ) {}
 
   addNewCarForm = this.formBuilder.group({
@@ -38,29 +41,11 @@ export class AddNewCarComponent implements OnInit {
     liked: false,
   };
 
-  ngOnInit(): void {}
-
-  open(content: any) {
-    this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  ngOnInit(): void {
+    this.carService.addCarToggleSubject.subscribe((data) => {
+      this.addCarFormToggle = data;
+      console.log("ngOnInit() of filterComp was called; " + this.addCarFormToggle)
+    })
   }
 
   saveNewCarToDB() {
@@ -95,5 +80,7 @@ export class AddNewCarComponent implements OnInit {
         'https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=6&m=922962354&s=612x612&w=0&h=_KKNzEwxMkutv-DtQ4f54yA5nc39Ojb_KPvoV__aHyU=';
     }
     this.carListComp.saveNewCarToDB(this.car);
+    // Clearing the form window;
+    this.addNewCarForm.reset();
   }
 }

@@ -15,7 +15,7 @@ export class FilteringPipe implements PipeTransform {
     if (filter.mdl == "" && filter.color == ""
       && filter.transmission == "" && filter.productionDate == "") {
       console.log("Filter is empty");
-      return value;
+      return value
 
     } else {
       if (filter.mdl != "") {

@@ -1,90 +1,123 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Car Details</h4>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="addNewCarForm">
-      <div>
-        <label for="model"> </label>
+<div *ngIf="addCarFormToggle">
+  <!-- ngNativeValidate enables the browser's validation instead of the Bootstrap's -->
+  <form
+    ngNativeValidate
+    class="filter-container"
+    [formGroup]="addNewCarForm"
+    (ngSubmit)="saveNewCarToDB()"
+  >
+    <div class="form-group row">
+      <label for="model" class="col-sm-2 col-form-label">Car Model</label>
+      <div class="col-sm-10">
         <input
-          id="model"
           type="text"
-          size="50"
-          placeholder="Car Model"
+          class="form-control"
+          id="model"
+          required
+          placeholder="Model"
           formControlName="model"
         />
       </div>
-      <div>
-        <label for="color"> </label>
+    </div>
+    <div class="form-group row">
+      <label for="color" class="col-sm-2 col-form-label">Color</label>
+      <div class="col-sm-10">
         <input
-          id="color"
           type="text"
-          size="50"
+          class="form-control"
+          id="color"
+          required
           placeholder="Color"
           formControlName="color"
         />
       </div>
-      <div>
-        <label for="description"> </label>
-        <textarea id="description" placeholder="Description" formControlName="description"rows="4" cols="53">
-          </textarea>
-      </div>
-      <div>
-        <label for="transmission"> </label>
-        <select id="transmission" formControlName="transmission">
-          <option value="" disabled selected>Select transmission</option>
-          <option value="Manual">Manual</option>
-          <option value="Auto">Automatic</option>
-        </select>
-      </div>
-      <label for="productionDate"></label>
-      <div class="input-group">
+    </div>
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label"
+        >Description</label
+      >
+      <div class="col-sm-10">
         <input
-          id="productionDate"
-          formControlName="productionDate"
+          type="text"
           class="form-control"
-          placeholder="yyyy-mm-dd"
-          name="dp"
-          ngbDatepicker
-          #dp="ngbDatepicker"
+          id="description"
+          required
+          placeholder="Description"
+          formControlName="description"
         />
-        <div class="input-group-append">
-          <button
-            class="btn btn-outline-secondary calendar"
-            (click)="dp.toggle()"
-            type="button"
-          ></button>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label">Production Date</label>
+      <div class="col-sm-10">
+        <div class="input-group">
+          <input
+            id="productionDate"
+            required
+            formControlName="productionDate"
+            class="form-control"
+            placeholder="YYYY-MM-DD"
+            name="dp"
+            ngbDatepicker
+            #d="ngbDatepicker"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary calendar"
+              (click)="d.toggle()"
+              type="button"
+            ></button>
+          </div>
         </div>
       </div>
-      <div>
-        <label for="image"> </label>
+    </div>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Transmission</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transmission"
+              id="gridRadios1"
+              required
+              formControlName="transmission"
+              value="Manual"
+              checked
+            />
+            <label class="form-check-label" for="gridRadios1"> Manual </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="transmission"
+              id="gridRadios2"
+              formControlName="transmission"
+              value="Auto"
+            />
+            <label class="form-check-label" for="gridRadios2"> Auto </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group row">
+      <label for="image" class="col-sm-2 col-form-label">Image</label>
+      <div class="col-sm-10">
         <input
-          id="image"
           type="text"
-          size="50"
-          placeholder="Paste Image link here https://"
+          class="form-control"
+          id="image"
+          placeholder="Image link http://"
           formControlName="image"
         />
       </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="modal.close('Save click'); saveNewCarToDB()"
-    >
-      Save
-    </button>
-  </div>
-</ng-template>
-
-<button (click)="open(content)" class="btn btn-primary btn-md">Add New Car</button>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
