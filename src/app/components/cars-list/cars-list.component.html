@@ -1,6 +1,17 @@
 <app-top-bar></app-top-bar>
 <app-filter></app-filter>
 <app-add-new-car></app-add-new-car>
+
+<!-- Show Success message if the car is saved correctly -->
+<div *ngIf="savedSuccessfully" class="alert alert-success" role="alert" style="text-align: center;">
+  Success
+</div>
+
+<!-- Show Success message if the car is saved correctly -->
+<div *ngIf="savingFailed" class="alert alert-danger" role="alert" style="text-align: center;">
+  Saving failed. Something has gone wrong.
+</div>
+
 <div class="car-gallery-container">
   <div class="gallery" *ngFor="let car of cars | filtering:filterValues">
     <a target="_blank" href={{car.image}}>

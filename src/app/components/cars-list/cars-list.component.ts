@@ -25,6 +25,10 @@ export class CarsListComponent implements OnInit {
     productionDate: '',
   };
 
+  savedSuccessfully: boolean = false;
+
+  savingFailed: boolean = false;
+
   constructor(
     private carsService: CarsService,
     private filterService: FilterService,
@@ -32,7 +36,6 @@ export class CarsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.carsService.getCars().subscribe((carz) => (this.cars = carz));
 
     // As soon as something gets submitted to the filtering form the "subscribe" will react
@@ -58,9 +61,23 @@ export class CarsListComponent implements OnInit {
 
   saveNewCarToDB(car: Car) {
     console.log('saveNewCarToDB in CarListComp was called;');
-    this.carsService
+    return this.carsService
       .saveNewCarToDB(car)
-      .subscribe((car) => this.cars.push(car));
-    this.cdr.detectChanges();
+      .subscribe(
+        (response) => {
+          this.cars.push(response);
+          this.savedSuccessfully = true;
+          setTimeout(()=> {
+            this.savedSuccessfully = false; // Removing the notification from the screen;
+          }, 3000)
+        },
+        (error) => {
+          this.savingFailed = true;
+          setTimeout(()=> {
+            this.savingFailed = false; // Removing the notification from the screen;
+          }, 3000)
+          console.log("Car was not pushed to DB. Error code = " + error.status);
+        }
+      );
   }
 }

@@ -3,7 +3,6 @@ import { FormBuilder } from '@angular/forms';
 import { Car } from 'src/app/Car';
 import { CarsService } from 'src/app/services/cars.service';
 import { CarsListComponent } from '../cars-list/cars-list.component';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-new-car',
@@ -11,8 +10,6 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./add-new-car.component.css'],
 })
 export class AddNewCarComponent implements OnInit {
-
-  model!: NgbDateStruct;
 
   addCarFormToggle!: boolean;
 
