@@ -9,7 +9,6 @@ import { FilterService } from 'src/app/services/filter/filter.service';
   styleUrls: ['./filter.component.css'],
 })
 export class FilterComponent implements OnInit {
-
   filterFormToggle!: boolean;
 
   filterForm = this.formBuilder.group({
@@ -32,12 +31,12 @@ export class FilterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.filterService.filterToggleSubject.subscribe((data) => {
       this.filterFormToggle = data;
-      console.log("ngOnInit() of filterComp was called; " + this.filterFormToggle)
-    })
-
+      console.log(
+        'ngOnInit() of filterComp was called; ' + this.filterFormToggle
+      );
+    });
   }
 
   submitFilter(): void {
@@ -67,5 +66,18 @@ export class FilterComponent implements OnInit {
       transmission: '',
       productionDate: '',
     };
+  }
+
+  resetFilter() {
+    // To reset filter we simply send the empty filter to carList comp;
+    console.log('Clear filter was called');
+    this.filter = {
+      mdl: '',
+      color: '',
+      transmission: '',
+      productionDate: '',
+    };
+    this.filterService.sendFilterValues(this.filter);
+    this.filterForm.reset();
   }
 }

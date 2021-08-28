@@ -1,9 +1,5 @@
 <div *ngIf="filterFormToggle">
-  <form
-    class="filter-container"
-    [formGroup]="filterForm"
-    (ngSubmit)="submitFilter()"
-  >
+  <form class="filter-container" [formGroup]="filterForm">
     <div class="form-group row">
       <label for="model" class="col-sm-2 col-form-label">Car Model</label>
       <div class="col-sm-10">
@@ -72,7 +68,17 @@
     </fieldset>
     <div class="form-group row">
       <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="button" (click)="submitFilter()" class="btn btn-primary">
+          Search
+        </button>
+        <button
+          type="button"
+          (click)="resetFilter()"
+          class="btn btn-primary"
+          style="margin-left: 15px"
+        >
+          Reset
+        </button>
       </div>
     </div>
   </form>
