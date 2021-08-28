@@ -1,4 +1,4 @@
-<app-top-bar></app-top-bar>
+<!-- <app-top-bar></app-top-bar>
 <div class="car-gallery-container">
   <div class="gallery" *ngFor="let car of favCars">
     <a target="_blank" href="{{ car.image }}">
@@ -21,4 +21,32 @@
       </p>
     </div>
   </div>
+</div>
+ -->
+
+ <app-top-bar></app-top-bar>
+<div class="car-gallery-container">
+  <div class="gallery" *ngFor="let car of favCars">
+
+    <a target="_blank" href="{{ car.image }}">
+      <img src="{{ car.image }}" alt="Cinque Terre" width="600" height="400" />
+    </a>
+    <div class="desc">
+      <p>
+        Model: {{ car.model }} <br />
+        Color: {{ car.color }} <br />
+        Transmission: {{ car.transmission }} <br />
+        Production date: {{ car.productionDate.substr(0, 10) }} <br />
+        Description: {{ car.description }} <br />
+        <br />
+        <fa-icon
+          class="addFav"
+          (click)="deleteCarFromFavorites(car)"
+          [ngStyle]="{ color: 'red' }"
+          [icon]="faTimes"
+        ></fa-icon>
+      </p>
+    </div>
+  </div>
+  <p *ngIf="favCars.length == 0">Nothing has been added here so far.</p>
 </div>

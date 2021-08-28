@@ -17,6 +17,7 @@ import { AddNewCarComponent } from './components/add-new-car/add-new-car.compone
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
     FilteringPipe,
     AddFavoriteComponent,
     FavoritesListComponent,
-    AddNewCarComponent
+    AddNewCarComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
     FontAwesomeModule,
     RouterModule.forRoot([
       { path: '', component: CarsListComponent },
-      { path: 'favorites', component: FavoritesListComponent }
+      { path: 'favorites', component: FavoritesListComponent },
+      {path: 'about', component: AboutComponent}
     ]),
     NgbModule
   ],
