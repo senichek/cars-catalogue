@@ -1,0 +1,38 @@
+<app-top-bar></app-top-bar>
+<div class="news-section-container">
+  <div class="main-news-container" *ngFor="let singleNews of mainSingleNews">
+    <a target="_blank" href="{{ singleNews.urlToImage }}">
+      <img src="{{ singleNews.urlToImage }}" alt="News_img" />
+    </a>
+    <p style="text-align: left; font-style: italic;">{{singleNews.publishedAt.substr(0, 10)}}</p>
+    <div>
+      <h5>{{ singleNews.title }} <br /></h5>
+      <br />
+      <p>{{ singleNews.description}}</p>
+      <p style="font-size: small;">{{ singleNews.content}}</p>
+    </div>
+  </div>
+  <div class="right-side-news-container">
+    <div class="right-side-single-news" *ngFor="let singleNews of rightSideNews">
+      <a target="_blank" href="{{ singleNews.urlToImage }}">
+        <img src="{{ singleNews.urlToImage }}" alt="News_img" />
+      </a>
+      <p style="text-align: left; font-style: italic;">{{singleNews.publishedAt.substr(0, 10)}}</p>
+      <div>
+        <p style="font-weight: bold;">{{ singleNews.title }} <br /></p>
+        <br />
+      </div>
+    </div>
+  </div>
+<div class="middle-news-container">
+  <div class="middle-news-container-singleNews" *ngFor="let singleNews of middleNews">
+    <a target="_blank" href="{{ singleNews.urlToImage }}">
+      <img src="{{ singleNews.urlToImage }}" alt="News_img" />
+    </a>
+    <p style="text-align: left; font-style: italic;">{{singleNews.publishedAt.substr(0, 10)}}</p>
+    <div>
+      <h6>{{ singleNews.title }} <br /></h6>
+    </div>
+  </div>
+</div>
+</div>

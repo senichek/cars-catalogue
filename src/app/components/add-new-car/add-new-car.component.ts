@@ -73,8 +73,7 @@ export class AddNewCarComponent implements OnInit {
     if (this.addNewCarForm.value.image != '') {
       this.car.image = this.addNewCarForm.value.image;
     } else {
-      this.car.image =
-        'https://media.istockphoto.com/vectors/no-image-available-sign-vector-id922962354?k=6&m=922962354&s=612x612&w=0&h=_KKNzEwxMkutv-DtQ4f54yA5nc39Ojb_KPvoV__aHyU=';
+      this.car.image = '/assets/placeholder-image-1.jpg'
     }
     this.carListComp.saveNewCarToDB(this.car);
     // Clearing the form window;

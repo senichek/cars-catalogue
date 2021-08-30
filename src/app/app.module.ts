@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './components/about/about.component';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AboutComponent } from './components/about/about.component';
     AddFavoriteComponent,
     FavoritesListComponent,
     AddNewCarComponent,
-    AboutComponent
+    AboutComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { AboutComponent } from './components/about/about.component';
     RouterModule.forRoot([
       { path: '', component: CarsListComponent },
       { path: 'favorites', component: FavoritesListComponent },
-      {path: 'about', component: AboutComponent}
+      {path: 'about', component: AboutComponent},
+      {path: 'news', component: NewsComponent}
     ]),
     NgbModule
   ],

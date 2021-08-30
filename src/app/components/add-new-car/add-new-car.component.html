@@ -1,6 +1,6 @@
 <div *ngIf="addCarFormToggle">
   <!-- ngNativeValidate enables the browser's validation instead of the Bootstrap's -->
-  <form
+ <form
     ngNativeValidate
     class="filter-container"
     [formGroup]="addNewCarForm"
@@ -100,7 +100,7 @@
           type="text"
           class="form-control"
           id="image"
-          placeholder="Image link http://"
+          placeholder="Image link http://               If empty a placeholder image will be used"
           formControlName="image"
         />
       </div>
