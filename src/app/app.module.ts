@@ -19,6 +19,7 @@ import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './components/about/about.component';
 import { NewsComponent } from './components/news/news.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NewsComponent } from './components/news/news.component';
     FavoritesListComponent,
     AddNewCarComponent,
     AboutComponent,
-    NewsComponent
+    NewsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { NewsComponent } from './components/news/news.component';
       { path: '', component: CarsListComponent },
       { path: 'favorites', component: FavoritesListComponent },
       {path: 'about', component: AboutComponent},
-      {path: 'news', component: NewsComponent}
+      {path: 'news', component: NewsComponent},
+      {path: 'login', component: LoginComponent}
     ]),
     NgbModule
   ],
