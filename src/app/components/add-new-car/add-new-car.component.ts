@@ -28,15 +28,7 @@ export class AddNewCarComponent implements OnInit {
     image: '',
   });
 
-  car: Car = {
-    description: '',
-    model: '',
-    color: '',
-    transmission: '',
-    productionDate: '',
-    image: '',
-    liked: false,
-  };
+  car = <Car>{};
 
   ngOnInit(): void {
     this.carService.addCarToggleSubject.subscribe((data) => {

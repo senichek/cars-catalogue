@@ -15,7 +15,8 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CarsService {
-  private apiURL = GlobalVariable.BASE_API_URL;
+
+  private apiURL = GlobalVariable.CARS_API_URL;
 
   cars: Car[] = [];
 

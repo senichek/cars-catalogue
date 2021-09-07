@@ -20,6 +20,7 @@ import { NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { AboutComponent } from './components/about/about.component';
 import { NewsComponent } from './components/news/news.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoginComponent } from './components/login/login.component';
     AddNewCarComponent,
     AboutComponent,
     NewsComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { LoginComponent } from './components/login/login.component';
       { path: 'favorites', component: FavoritesListComponent },
       {path: 'about', component: AboutComponent},
       {path: 'news', component: NewsComponent},
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent}
     ]),
     NgbModule
   ],
